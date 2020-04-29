@@ -1,0 +1,108 @@
+<section data-section-id="reset-password" data-section-type="reset-password">
+  <div class="Container">
+    <div class="PageContent PageContent--fitScreen PageContent--extraNarrow">
+      {%- form 'create_customer', name: 'create_customer', class: 'Form Form--spacingTight', id: 'create_customer' -%}
+        <header class="Form__Header">
+          <h1 class="Form__Title Heading u-h1">Wholeseller Registration</h1>
+          <p class="Form__Legend">Please fill in all the information below to be better assessed as a wholeseller.</p>
+        </header>
+
+        {%- if form.errors -%}
+          <div class="Form__Alert Alert Alert--error">
+            <ul class="Alert__ErrorList">
+              {%- for field in form.errors -%}
+                {%- if field == 'form' -%}
+                  <li class="Alert__ErrorItem">{{ form.errors.messages[field] }}</li>
+                {%- else -%}
+                  <li class="Alert__ErrorItem"><strong>{{ form.errors.translated_fields[field] }}</strong> {{ form.errors.messages[field] }}</li>
+                {%- endif -%}
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endif -%}
+
+        <div class="Form__Item">
+          <input type="name_of_store" class="Form__Input" name="customer[note][Name of store]" aria-label="Name of store" placeholder="Name of store" required="required">
+          <label class="Form__FloatingLabel">Name of store</label>
+        </div>
+
+        <div class="Form__Item">
+          <input type="address" class="Form__Input" name="customer[note][Address]" aria-label="Address" placeholder="Address" required="required">
+          <label class="Form__FloatingLabel">Address</label>
+        </div>
+
+        <div class="Form__Item">
+          <input type="city" class="Form__Input" name="customer[note][City]" aria-label="City" placeholder="City" required="required">
+          <label class="Form__FloatingLabel">City</label>
+        </div>
+
+        <div class="Form__Item">
+          <input type="postal_code" class="Form__Input" name="customer[note][Postal code]" aria-label="Postal code" placeholder="Postal code" required="required">
+          <label class="Form__FloatingLabel">Postal code</label>
+        </div>
+
+        <label for="province" class="hidden-label">Province</label>
+        <div class="Form__Item">
+          <select id="province" class="Form__Input" aria-label="Province" required="required" name="customer[note][Province]">
+            <option>Ontario</option>
+            <option>Quebec</option>
+            <option>Nova Scotia</option>
+            <option>New Brunswick</option>
+            <option>Manitoba</option>
+            <option>British Columbia</option>
+            <option>Prince Edward Island</option>
+            <option>Saskatchewan</option>
+            <option>Alberta</option>
+            <option>Newfoundland and Labrador</option>
+            <option>Northwest Territories</option>
+            <option>Yukon</option>
+            <option>Nunavut</option>
+          </select>
+        </div>
+
+        <div class="Form__Item">
+          <input type="store_phone_number" class="Form__Input" name="customer[note][Store phone number]" aria-label="Store phone number" placeholder="Store phone number" required="required">
+          <label class="Form__FloatingLabel">Store phone number</label>
+        </div>
+
+        <div class="Form__Item">
+          <input type="contact_phone_number" class="Form__Input" name="customer[note][Contact phone number]" aria-label="Contact phone number" placeholder="Contact phone number" required="required">
+          <label class="Form__FloatingLabel">Contact phone number</label>
+        </div>
+
+        <div class="Form__Item">
+          <input type="name_of_store_owner" class="Form__Input" name="customer[note][Name of store owner]" aria-label="Name of store owner" placeholder="Name of store owner" required="required">
+          <label class="Form__FloatingLabel">Name of store owner</label>
+        </div>
+
+        <div class="Form__Item">
+          <input type="name_of_buyer" class="Form__Input" name="customer[note][Name of buyer]" aria-label="Name of buyer" placeholder="Name of buyer" required="required">
+          <label class="Form__FloatingLabel">Name of buyer</label>
+        </div>
+
+        <div class="Form__Item">
+          <input type="gst_number" class="Form__Input" name="customer[note][GST number]" aria-label="GST number" placeholder="GST number" required="required">
+          <label class="Form__FloatingLabel">GST number</label>
+        </div>
+
+        <div class="Form__Item">
+          <input type="fax_number" class="Form__Input" name="customer[note][Fax number]" aria-label="Fax number" placeholder="Fax number">
+          <label class="Form__FloatingLabel">Fax number</label>
+        </div>
+
+        <div class="Form__Item">
+          <input type="email" class="Form__Input" name="customer[email]" aria-label="{{ 'customer.register.email' | t }}" placeholder="{{ 'customer.register.email' | t }}" required="required">
+          <label class="Form__FloatingLabel">{{ 'customer.register.email' | t }}</label>
+        </div>
+
+        <div class="Form__Item">
+          <input type="password" class="Form__Input" name="customer[password]" aria-label="{{ 'customer.register.password' | t }}" placeholder="{{ 'customer.register.password' | t }}" required="required">
+          <label class="Form__FloatingLabel">{{ 'customer.register.password' | t }}</label>
+        </div>
+
+        <h3>*Please note that it will take up to 24 hours to be approved as a wholeseller*</h3>
+        <button type="submit" class="Form__Submit Button Button--primary Button--full">{{ 'customer.register.submit' | t }}</button>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
