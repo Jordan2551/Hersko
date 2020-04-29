@@ -414,6 +414,7 @@ HEADER CONTENT
             <li class="HorizontalList__Item">
               <a href="{{ routes.cart_url }}" class="Heading u-h6" {% unless template == 'cart' or settings.cart_type == 'page' %}data-action="open-drawer" data-drawer-id="sidebar-cart" aria-label="{{ 'header.navigation.open_cart' | t }}"{% endunless %}>{{ 'header.navigation.cart' | t }} (<span class="Header__CartCount">{{ cart.item_count }}</span>)</a>
             </li>
+
           </ul>
         </nav>
       {%- elsif localization_form != blank -%}
@@ -426,22 +427,36 @@ HEADER CONTENT
         </nav>
       {%- endunless -%}
 
-      {%- if shop.customer_accounts_enabled and section.settings.show_icons or use_sidebar_menu -%}
-        <a href="{{ routes.account_url }}" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-phone">
-          {%- render 'icon' with 'account' -%}
-        </a>
-      {%- endif -%}
+      <a href="https://www.hersko.ca/pages/contact-us" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-phone">
+        {%- render 'icon' with 'account' -%}
+        Contact
+      </a>
 
       <a href="{{ routes.search_url }}" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable {% unless section.settings.show_icons or use_sidebar_menu %}hidden-desk{% endunless %}" data-action="toggle-search" aria-label="{{ 'header.navigation.search' | t }}">
         <span class="hidden-tablet-and-up">{%- render 'icon' with 'search' -%}</span>
         <span class="hidden-phone">{%- render 'icon' with 'search-desktop' -%}</span>
       </a>
 
+      <a href="https://www.hersko.ca/blogs/news" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-phone">
+        {%- render 'icon' with 'account' -%}
+        BLOG
+      </a>
+      
+      
+      {%- if shop.customer_accounts_enabled and section.settings.show_icons or use_sidebar_menu -%}
+        <a href="{{ routes.account_url }}" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable hidden-phone">
+          {%- render 'icon' with 'account' -%}
+        </a>
+      {%- endif -%}
+
       <a href="{{ routes.cart_url }}" class="Header__Icon Icon-Wrapper Icon-Wrapper--clickable {% unless section.settings.show_icons or use_sidebar_menu %}hidden-desk{% endunless %}" {% if settings.cart_type == 'drawer' %}data-action="open-drawer" data-drawer-id="sidebar-cart" aria-expanded="false" aria-label="{{ 'header.navigation.open_cart' | t }}"{% endif %}>
         <span class="hidden-tablet-and-up">{%- render 'icon' with 'cart' -%}</span>
         <span class="hidden-phone">{%- render 'icon' with 'cart-desktop' -%}</span>
         <span class="Header__CartDot {% if cart.item_count > 0 %}is-visible{% endif %}"></span>
       </a>
+      
+      
+
     </div>
   </div>
 

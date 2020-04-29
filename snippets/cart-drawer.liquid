@@ -70,11 +70,63 @@
           {%- endif -%}
         {%- endif -%}
 
-        <button type="submit" name="checkout" class="Cart__Checkout Button Button--primary Button--full">
-          <span>{{- 'cart.general.checkout' | t -}}</span>
-          <span class="Button__SeparatorDot"></span>
-          <span>{{ cart.total_price | money_without_trailing_zeros }}</span>
-        </button>
+        {% if customer and customer.tags contains 'wholesale' %}
+          {%- comment -%}
+            CHECK IF ALL ITEMS IN WHOLESELLER ACCOUNT'S CART ARE NON WHOLESALE
+          {%- endcomment -%}
+          {% assign all_non_wholesale = true %}
+          {% for item in cart.items %}
+            {% if item.product.template_suffix == 'wholesale' %}
+                {% assign all_non_wholesale = false %}
+            {% endif %}
+          {% endfor %}
+          {% if all_non_wholesale == true %}
+            <button type="submit" name="checkout" class="Cart__Checkout Button Button--primary Button--full">
+              <span>{{- 'cart.general.checkout' | t -}}</span>
+              <span class="Button__SeparatorDot"></span>
+              <span>{{ cart.total_price | money_without_trailing_zeros }}</span>
+            </button>
+          {%- comment -%}
+            THERE IS A WHOLESALE ITEM IN CART SO CHECK IF SUB-TOTAL >= $350
+          {%- endcomment -%}
+          {% else %} 
+            {% if cart.total_price < 35000 %}
+              <p style="color: red; font-size: 16px">
+                Sorry, but a minimum sub-total of at least $350 is required to make a wholesale purchase!
+                <br><br><span style="font-weight:bold; color: black;">Your current sub-total is: {{ cart.total_price | money_without_trailing_zeros }}</span>
+                </p>
+            {% else %}
+              <button type="submit" name="checkout" class="Cart__Checkout Button Button--primary Button--full">
+                <span>{{- 'cart.general.checkout' | t -}}</span>
+                <span class="Button__SeparatorDot"></span>
+                <span>{{ cart.total_price | money_without_trailing_zeros }}</span>
+              </button>
+            {% endif %}
+          {% endif %}
+        {%- comment -%}
+          Check if non wholesale  has wholesale items
+        {%- endcomment -%}
+        {% else %}
+          {% assign contains_wholesale_item = false %}
+          {% for item in cart.items %}
+            {% if item.product.template_suffix == 'wholesale' %}
+                {% assign contains_wholesale_item = true %}
+            {% endif %}
+          {% endfor %}
+        <!-- CHECK IF A NON-WHOLESALE ITEM IS FOUND IN THE WHOLESELLER ACCOUNT -->
+        {% if contains_wholesale_item == true %}
+            <p style="color: red; font-size: 16px">
+              A wholesale item was found in your cart! You can only purchase wholesale items as a wholeseller customer.
+              You must <a style="text-decoration: underline;" href="https://www.hersko.ca/account/login">sign-in</a> to an approved wholesale account or <a style="text-decoration: underline;" href="https://www.hersko.ca/pages/register-wholesale">register</a> for one.
+            </p>
+        {% else %} 
+          <button type="submit" name="checkout" class="Cart__Checkout Button Button--primary Button--full">
+            <span>{{- 'cart.general.checkout' | t -}}</span>
+            <span class="Button__SeparatorDot"></span>
+            <span>{{ cart.total_price | money_without_trailing_zeros }}</span>
+          </button>
+        {% endif %}
+      {% endif %}
 
         {%- if settings.cart_enable_notes -%}
           <div class="Cart__OffscreenNoteContainer" aria-hidden="true">

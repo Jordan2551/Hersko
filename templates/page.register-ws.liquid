@@ -21,43 +21,11 @@
           </div>
         {%- endif -%}
 
+        <h2 style="font-weight: bold; font-size: 18px; border-bottom: 3px solid #1a5432; margin-bottom: 17px">Store Details</h2>
+
         <div class="Form__Item">
           <input type="name_of_store" class="Form__Input" name="customer[note][Name of store]" aria-label="Name of store" placeholder="Name of store" required="required">
           <label class="Form__FloatingLabel">Name of store</label>
-        </div>
-
-        <div class="Form__Item">
-          <input type="address" class="Form__Input" name="customer[note][Address]" aria-label="Address" placeholder="Address" required="required">
-          <label class="Form__FloatingLabel">Address</label>
-        </div>
-
-        <div class="Form__Item">
-          <input type="city" class="Form__Input" name="customer[note][City]" aria-label="City" placeholder="City" required="required">
-          <label class="Form__FloatingLabel">City</label>
-        </div>
-
-        <div class="Form__Item">
-          <input type="postal_code" class="Form__Input" name="customer[note][Postal code]" aria-label="Postal code" placeholder="Postal code" required="required">
-          <label class="Form__FloatingLabel">Postal code</label>
-        </div>
-
-        <label for="province" class="hidden-label">Province</label>
-        <div class="Form__Item">
-          <select id="province" class="Form__Input" aria-label="Province" required="required" name="customer[note][Province]">
-            <option>Ontario</option>
-            <option>Quebec</option>
-            <option>Nova Scotia</option>
-            <option>New Brunswick</option>
-            <option>Manitoba</option>
-            <option>British Columbia</option>
-            <option>Prince Edward Island</option>
-            <option>Saskatchewan</option>
-            <option>Alberta</option>
-            <option>Newfoundland and Labrador</option>
-            <option>Northwest Territories</option>
-            <option>Yukon</option>
-            <option>Nunavut</option>
-          </select>
         </div>
 
         <div class="Form__Item">
@@ -89,6 +57,44 @@
           <input type="fax_number" class="Form__Input" name="customer[note][Fax number]" aria-label="Fax number" placeholder="Fax number">
           <label class="Form__FloatingLabel">Fax number</label>
         </div>
+
+        <h3 style="font-weight: bold; font-size: 18px; border-bottom: 3px solid #1a5432; margin-bottom: 17px">Store Location</h3>
+
+        <label for="province" class="hidden-label">Province</label>
+        <div class="Form__Item">
+          <select id="province" class="Form__Input" aria-label="Province" required="required" name="customer[note][Province]">
+            <option>Ontario</option>
+            <option>Quebec</option>
+            <option>Nova Scotia</option>
+            <option>New Brunswick</option>
+            <option>Manitoba</option>
+            <option>British Columbia</option>
+            <option>Prince Edward Island</option>
+            <option>Saskatchewan</option>
+            <option>Alberta</option>
+            <option>Newfoundland and Labrador</option>
+            <option>Northwest Territories</option>
+            <option>Yukon</option>
+            <option>Nunavut</option>
+          </select>
+        </div>
+        
+        <div class="Form__Item">
+          <input type="address" class="Form__Input" name="customer[note][Address]" aria-label="Address" placeholder="Address" required="required">
+          <label class="Form__FloatingLabel">Address</label>
+        </div>
+
+        <div class="Form__Item">
+          <input type="city" class="Form__Input" name="customer[note][City]" aria-label="City" placeholder="City" required="required">
+          <label class="Form__FloatingLabel">City</label>
+        </div>
+
+        <div class="Form__Item">
+          <input type="postal_code" class="Form__Input" name="customer[note][Postal code]" aria-label="Postal code" placeholder="Postal code" required="required">
+          <label class="Form__FloatingLabel">Postal code</label>
+        </div>
+
+        <h2 style="font-weight: bold; font-size: 18px; border-bottom: 3px solid #1a5432; margin-bottom: 17px">Sign in information</h2>
 
         <div class="Form__Item">
           <input type="email" class="Form__Input" name="customer[email]" aria-label="{{ 'customer.register.email' | t }}" placeholder="{{ 'customer.register.email' | t }}" required="required">
