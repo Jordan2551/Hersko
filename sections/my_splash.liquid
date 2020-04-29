@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script></head>
+    {{ 'styles.css' | asset_url | stylesheet_tag }}
+	{{ 'index.js'  | asset_url | script_tag }}
+<div class="sp">
+    <div class="leaf-container">
+        <div class="main-container">
+            <div class="logo-container">
+                <p>Welcome to</p>
+                <img class="logo" src="{{'Hersko_logo.png' | asset_url}}" alt="Hersko Logo">
+            </div>
+            <p class="select-option">Please select one</p>
+            <div id="button-container">
+                <a id="retailer" href="#">Retailer</a>
+                <a id="personal" href="#">Personal</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
