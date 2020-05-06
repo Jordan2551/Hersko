@@ -3,8 +3,10 @@
     <div class="PageContent PageContent--fitScreen PageContent--extraNarrow">
       {%- form 'create_customer', name: 'create_customer', class: 'Form Form--spacingTight', id: 'create_customer' -%}
         <header class="Form__Header">
-          <h1 class="Form__Title Heading u-h1">Wholeseller Registration</h1>
-          <p class="Form__Legend">Please fill in all the information below to be better assessed as a wholeseller.</p>
+          <h1 class="Form__Title Heading u-h1">Retailer Registration</h1>
+          <p class="Form__Legend">
+            Please fill in all the information below to be better assessed as a retailer.
+          </p>
         </header>
 
         {%- if form.errors -%}
@@ -106,7 +108,7 @@
           <label class="Form__FloatingLabel">{{ 'customer.register.password' | t }}</label>
         </div>
 
-        <h3>*Please note that it will take up to 24 hours to be approved as a wholeseller*</h3>
+        <h3>*Please note that it will take up to 24 hours to be approved as a retailer*</h3>
         <button type="submit" class="Form__Submit Button Button--primary Button--full">{{ 'customer.register.submit' | t }}</button>
       {%- endform -%}
     </div>

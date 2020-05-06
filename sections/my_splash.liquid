@@ -1,9 +1,10 @@
 <html lang="en">
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script></head>
-    {{ 'styles.css' | asset_url | stylesheet_tag }}
-	{{ 'index.js'  | asset_url | script_tag }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+    {{ 'my_splash.css' | asset_url | stylesheet_tag }}
+	{{ 'my_splash.js'  | asset_url | script_tag }}
 <div class="sp">
     <div class="leaf-container">
         <div class="main-container">
@@ -13,8 +14,12 @@
             </div>
             <p class="select-option">Please select one</p>
             <div id="button-container">
-                <a id="retailer" href="#">Retailer</a>
-                <a id="personal" href="#">Personal</a>
+                {% if customer and customer.tags contains 'wholesale' %}
+                    <a id="retailer" href="https://www.hersko.ca/collections/wholesale">Retailer</a>
+                {% else %}
+                    <a id="retailer" href="https://www.hersko.ca/account/login">Retailer</a>    
+                {% endif %}
+                <a id="personal" href="https://www.hersko.ca/collections/psoriasis-eczema-atopic-dermatitis-seborrhea">Personal</a>
             </div>
         </div>
     </div>
